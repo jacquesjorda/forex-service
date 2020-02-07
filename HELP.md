@@ -85,7 +85,7 @@ $ docker build -t myrep/mvn-builder:latest --cache-from myrep/mvn-builder:latest
 ## Use builder container to run tests
 $ # run tests - test results are saved into $PWD/target/surefire-reports
 $ docker run -it --rm -v "$PWD"/target:/usr/src/app/target myrep/mvn-builder -T 1C -o test
-## Use builder container to createa pplication WAR
+## Use builder container to create application WAR
 $ # create application WAR file (skip tests) - $PWD/target/spring-boot-rest-example-0.3.0.war
 $ docker run -it --rm -v $(shell pwd)/target:/usr/src/app/target myrep/mvn-builder package -T 1C -o -Dmaven.test.skip=true
 
@@ -98,3 +98,10 @@ $ echo http://$SERVICE_IP:8080/login
 
 
 Using the local repository is possible if you build in k8s. Before building with "docker build .", the command "eval $(minikube docker-env)" must be runned.
+
+
+# Playing with OpenShift
+## Creating the project
+oc new-project conversion-service
+## 
+
